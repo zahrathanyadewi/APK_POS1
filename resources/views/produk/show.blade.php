@@ -1,6 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+  .card {
+    border: 1px solid #D9E7E2;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px -14px rgba(34, 66, 58, 0.15) !important;
+    overflow: hidden;
+  }
+
+  .card-header.bg-primary {
+    background: #3F7D6E !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    border-bottom: none;
+  }
+
+  .table {
+    background: #ffffff;
+  }
+  .table th {
+    background: #F0F7F4;
+    color: #5C7D74;
+    font-weight: 600;
+    width: 30%;
+  }
+  .table td, .table th {
+    border-color: #E4EFEC !important;
+    vertical-align: middle;
+  }
+
+  .btn-secondary {
+    background: #5C7D74 !important;
+    border-color: #5C7D74 !important;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .btn-secondary:hover {
+    background: #4A6960 !important;
+    border-color: #4A6960 !important;
+  }
+</style>
+
 <div class="container">
 
     <div class="card shadow">

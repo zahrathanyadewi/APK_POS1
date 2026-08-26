@@ -6,6 +6,104 @@
 
 @include('layouts.navbar')
 
+<style>
+  body {
+    background: linear-gradient(160deg, #EAF3EF 0%, #DCEAE6 100%);
+    font-family: 'Inter', sans-serif;
+    color: #22423A;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: #22423A;
+    margin-top: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 small.text-muted {
+    font-size: 1.1rem;
+    color: #7C978E !important;
+  }
+
+  h3 {
+    font-weight: 600;
+    color: #22423A;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    border: 1px solid #D9E7E2;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px -14px rgba(34, 66, 58, 0.15);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .card-header {
+    background: #F0F7F4;
+    color: #5C7D74;
+    font-weight: 500;
+    border-bottom: 1px solid #D9E7E2;
+  }
+
+  .card-body {
+    background: #ffffff;
+  }
+
+  .card-title {
+    color: #3F7D6E;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .table {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .table thead th {
+    background: #F0F7F4;
+    color: #5C7D74;
+    font-weight: 600;
+    border-bottom: 2px solid #D9E7E2;
+  }
+
+  .table td, .table th {
+    border-color: #E4EFEC !important;
+    vertical-align: middle;
+  }
+
+  .table tbody tr:hover {
+    background: #F7FAF9;
+  }
+
+  .text-muted {
+    color: #7C978E !important;
+  }
+
+  a {
+    color: #3F7D6E;
+  }
+  a:hover {
+    color: #34675A;
+  }
+
+  .pagination .page-link {
+    color: #3F7D6E;
+    border-color: #D9E7E2;
+  }
+  .pagination .page-item.active .page-link {
+    background-color: #3F7D6E;
+    border-color: #3F7D6E;
+  }
+  .pagination .page-link:hover {
+    background-color: #E4F0EC;
+    color: #34675A;
+  }
+</style>
+
 <div class="text-center">
   <h1>
     Ringkasan Hari Ini
@@ -161,3 +259,5 @@
 </div>
           </div>
 </div>
+
+@endsection

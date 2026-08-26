@@ -71,7 +71,7 @@ class PenjualanController extends Controller
 
         $mode = 'create';
 
-        return view('penjualan.pos', compact('sale', 'products', 'mode'));
+        return view('penjualan.create', compact('sale', 'products', 'mode'));
 
     }
 
@@ -111,7 +111,7 @@ class PenjualanController extends Controller
         $products = Produk::orderBy('nama')->get();
         $mode = 'edit';
 
-        return view('penjualan.pos', compact('sale', 'products', 'mode'));
+        return view('penjualan.create', compact('sale', 'products', 'mode'));
     }
 
     /**

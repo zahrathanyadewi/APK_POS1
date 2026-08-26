@@ -4,6 +4,119 @@
 
 @section('content')
 
+<style>
+  h4 {
+    color: #22423A;
+    font-weight: 700;
+  }
+
+  .card {
+    border: 1px solid #D9E7E2;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px -14px rgba(34, 66, 58, 0.15);
+    overflow: hidden;
+  }
+
+  .card-footer {
+    background: #F0F7F4;
+    border-top: 1px solid #D9E7E2;
+  }
+
+  .form-control,
+  .form-select {
+    border: 1.5px solid #D9E7E2;
+  }
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #3F7D6E;
+    box-shadow: 0 0 0 4px #E4F0EC;
+  }
+
+  /* Tombol produk (list kiri) */
+  .btn-outline-primary {
+    border-color: #BFD9D1 !important;
+    color: #22423A !important;
+    border-radius: 10px;
+  }
+  .btn-outline-primary:hover,
+  .btn-outline-primary:focus {
+    background: #F0F7F4 !important;
+    border-color: #3F7D6E !important;
+    color: #22423A !important;
+  }
+  .btn-outline-primary small {
+    color: #5C7D74 !important;
+  }
+
+  /* Tombol tambah "+" */
+  .btn-primary {
+    background: #3F7D6E !important;
+    border-color: #3F7D6E !important;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  .btn-primary:hover {
+    background: #34675A !important;
+    border-color: #34675A !important;
+  }
+
+  /* Tombol Hapus di keranjang */
+  .btn-danger {
+    background: #6B7F6C !important;
+    border-color: #5A6E5B !important;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .btn-danger:hover {
+    background: #5A6E5B !important;
+    border-color: #495D4A !important;
+  }
+
+  /* Checkout */
+  .btn-success {
+    background: #3F7D6E !important;
+    border-color: #3F7D6E !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .btn-success:hover {
+    background: #34675A !important;
+    border-color: #34675A !important;
+  }
+
+  /* Batalkan Transaksi */
+  .btn-outline-danger {
+    color: #B5624E !important;
+    border-color: #D9B3A8 !important;
+    border-radius: 8px;
+  }
+  .btn-outline-danger:hover {
+    background: #B5624E !important;
+    border-color: #B5624E !important;
+    color: #ffffff !important;
+  }
+
+  .table thead.table-light {
+    background: #F0F7F4 !important;
+  }
+  .table th {
+    color: #5C7D74;
+    font-weight: 600;
+  }
+  .table td, .table th {
+    border-color: #E4EFEC !important;
+    vertical-align: middle;
+  }
+
+  .alert-danger {
+    background: #F3E6E1 !important;
+    border-color: #E0C4B8 !important;
+    color: #8C4A3A !important;
+    border-radius: 8px;
+  }
+</style>
+
 {{-- ALERT ERROR --}}
 @if (session('errors'))
     <div class="alert alert-danger">
