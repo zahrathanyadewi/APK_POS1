@@ -39,7 +39,6 @@
     box-shadow: 0 0 0 3px #F3E4DE !important;
   }
 
-  /* Tombol Logout - solid plum, tetap terlihat tapi senada */
   .navbar form .btn-danger {
     background: #4A2C38 !important;
     border: 1px solid #4A2C38 !important;
@@ -63,7 +62,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Aveline</a>
+    <a class="navbar-brand" href="{{ route('tentang') }}">Aveline</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,9 +71,11 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
         </li>
+        @if (Auth::check() && Auth::user()->role && Auth::user()->role->name === 'admin')
         <li class="nav-item">
           <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Pengguna</a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link {{ Request::is('produk') ? 'active' : '' }}" href="{{ route('produk.index') }}">Produk</a>
         </li>
@@ -84,7 +85,7 @@
       </ul>
       <form class="position-absolute top-50 start-100 translate-middle" action="{{ route('logout') }}" method="POST">
         @csrf
-        <button type="submit" class="btn btn-danger">Logout</button>
+        <button type="submit" class="btn btn-danger">Keluar</button>
       </form>
     </div>
   </div>

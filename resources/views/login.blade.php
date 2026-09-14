@@ -122,7 +122,8 @@
       <span>Aveline</span>
     </div>
     <h1 class="card-title">Masuk ke akun</h1>
-  
+    <p>Selamat Datang Di Toko Kosmetik AVELINE</p>
+
   </div>
   <div class="card-body">
     <form action="{{ route('auth') }}" method="POST">
