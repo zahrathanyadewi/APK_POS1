@@ -84,6 +84,11 @@
     background: #34675A !important;
     border-color: #34675A !important;
   }
+  .btn-success:disabled {
+    background: #A9C2BB !important;
+    border-color: #A9C2BB !important;
+    cursor: not-allowed;
+  }
 
   /* Batalkan Transaksi */
   .btn-outline-danger {
@@ -114,6 +119,47 @@
     border-color: #E0C4B8 !important;
     color: #8C4A3A !important;
     border-radius: 8px;
+  }
+
+  /* QRIS */
+  #qris-container {
+    display: none;
+    border: 1.5px dashed #BFD9D1;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #F8FBFA;
+  }
+  #qris-container img {
+    max-width: 220px;
+    width: 100%;
+  }
+
+  /* Cash / Kembalian */
+  #cash-container {
+    display: none;
+    border: 1.5px dashed #BFD9D1;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #F8FBFA;
+  }
+  #cash-container label {
+    font-size: 0.85rem;
+    color: #5C7D74;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+  }
+  #kembalian-text {
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  #kembalian-text.kurang {
+    color: #B5624E;
+  }
+  #kembalian-text.cukup {
+    color: #22423A;
   }
 </style>
 
@@ -253,13 +299,30 @@
                     @csrf
                     @method('PUT')
 
-                    <select name="payment_method" class="form-select mb-2" required>
+                    <select name="payment_method" id="payment_method" class="form-select mb-2" required>
                         <option value="">Pilih Pembayaran</option>
                         <option value="CASH">Cash</option>
                         <option value="QRIS">QRIS</option>
                     </select>
 
-                    <button class="btn btn-success w-100
+                    {{-- GAMBAR QRIS (muncul kalau QRIS dipilih) --}}
+                    <div id="qris-container" class="text-center">
+                        <img src="{{ asset('images/qris.png') }}" alt="QRIS">
+                        <p class="text-muted small mb-0 mt-1">Scan untuk membayar</p>
+                    </div>
+
+                    {{-- UANG DITERIMA & KEMBALIAN (muncul kalau Cash dipilih) --}}
+                    <div id="cash-container">
+                        <label for="uang_diterima">Uang Diterima</label>
+                        <input type="number"
+                               id="uang_diterima"
+                               class="form-control"
+                               placeholder="Masukkan jumlah uang dari pembeli"
+                               min="0">
+                        <p id="kembalian-text" class="mb-0"></p>
+                    </div>
+
+                    <button id="btn-checkout" class="btn btn-success w-100
                             {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}">
                         Checkout
                     </button>
@@ -284,4 +347,51 @@
     </div>
 
 </div>
+
+<script>
+    const totalPembayaran = {{ (int) $sale->total_pembayaran }};
+
+    const paymentMethod = document.getElementById('payment_method');
+    const qrisContainer = document.getElementById('qris-container');
+    const cashContainer = document.getElementById('cash-container');
+    const uangDiterima = document.getElementById('uang_diterima');
+    const kembalianText = document.getElementById('kembalian-text');
+    const btnCheckout = document.getElementById('btn-checkout');
+
+    function updateKembalian() {
+        const diterima = parseInt(uangDiterima.value) || 0;
+        const kembalian = diterima - totalPembayaran;
+
+        if (diterima === 0) {
+            kembalianText.textContent = '';
+            kembalianText.className = 'mb-0';
+            btnCheckout.disabled = false;
+            return;
+        }
+
+        if (kembalian < 0) {
+            kembalianText.textContent = 'Uang belum cukup, kurang Rp ' + Math.abs(kembalian).toLocaleString('id-ID');
+            kembalianText.className = 'mb-0 kurang';
+            btnCheckout.disabled = true;
+        } else {
+            kembalianText.textContent = 'Kembalian: Rp ' + kembalian.toLocaleString('id-ID');
+            kembalianText.className = 'mb-0 cukup';
+            btnCheckout.disabled = false;
+        }
+    }
+
+    paymentMethod.addEventListener('change', function () {
+        qrisContainer.style.display = (this.value === 'QRIS') ? 'block' : 'none';
+        cashContainer.style.display = (this.value === 'CASH') ? 'block' : 'none';
+
+        if (this.value === 'CASH') {
+            uangDiterima.value = '';
+            updateKembalian();
+        } else {
+            btnCheckout.disabled = false;
+        }
+    });
+
+    uangDiterima.addEventListener('input', updateKembalian);
+</script>
 @endsection

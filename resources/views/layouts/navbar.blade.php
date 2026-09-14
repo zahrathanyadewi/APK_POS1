@@ -1,18 +1,21 @@
 <style>
   .navbar {
     background: #ffffff !important;
-    border-bottom: 1px solid #D9E7E2;
-    box-shadow: 0 2px 12px -6px rgba(34, 66, 58, 0.1);
+    border-bottom: 1px solid #ECDFDA;
+    box-shadow: 0 2px 12px -6px rgba(74, 44, 56, 0.1);
   }
 
   .navbar-brand {
-    color: #22423A !important;
+    font-family: 'Italiana', serif;
+    color: #4A2C38 !important;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .navbar-nav .nav-link {
-    color: #5C7D74 !important;
+    color: #8A7580 !important;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -20,37 +23,37 @@
   }
 
   .navbar-nav .nav-link:hover {
-    color: #3F7D6E !important;
-    background: #F0F7F4;
+    color: #4A2C38 !important;
+    background: #F8EFEA;
   }
 
   .navbar-nav .nav-link.active {
     color: #ffffff !important;
-    background: #3F7D6E;
+    background: #4A2C38;
   }
 
   .navbar-toggler {
-    border-color: #D9E7E2 !important;
+    border-color: #ECDFDA !important;
   }
   .navbar-toggler:focus {
-    box-shadow: 0 0 0 3px #E4F0EC !important;
+    box-shadow: 0 0 0 3px #F3E4DE !important;
   }
 
-  /* Tombol Logout - solid teal, tetap terlihat tapi senada */
+  /* Tombol Logout - solid plum, tetap terlihat tapi senada */
   .navbar form .btn-danger {
-    background: #3F7D6E !important;
-    border: 1px solid #3F7D6E !important;
+    background: #4A2C38 !important;
+    border: 1px solid #4A2C38 !important;
     color: #ffffff !important;
     font-weight: 600;
     border-radius: 8px;
     padding: 6px 18px;
-    box-shadow: 0 4px 10px -4px rgba(63, 125, 110, 0.5);
+    box-shadow: 0 4px 10px -4px rgba(74, 44, 56, 0.5);
     transition: background 0.15s ease, transform 0.05s ease;
   }
 
   .navbar form .btn-danger:hover {
-    background: #34675A !important;
-    border-color: #34675A !important;
+    background: #3A2029 !important;
+    border-color: #3A2029 !important;
   }
 
   .navbar form .btn-danger:active {
@@ -60,7 +63,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">POS</a>
+    <a class="navbar-brand" href="#">Aveline</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,7 +73,7 @@
           <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Users</a>
+          <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Pengguna</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::is('produk') ? 'active' : '' }}" href="{{ route('produk.index') }}">Produk</a>

@@ -1,39 +1,80 @@
 @extends('layouts.app')
 
-@section('title', 'Ini Halaman Ujicoba')
+@section('title', 'Login Aveline')
 
 @section('content')
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Italiana&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   body {
-    background: linear-gradient(160deg, #EAF3EF 0%, #DCEAE6 100%);
+    background: linear-gradient(180deg, #F3E4DE 0%, #F8F0EC 100%);
     min-height: 100vh;
+    font-family: 'Inter', sans-serif;
   }
 
   .login-card {
-    width: 20rem;
+    width: 22rem;
     border: none;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 40px -18px rgba(34, 66, 58, 0.25);
+    box-shadow: 0 24px 60px -24px rgba(74, 44, 56, 0.25);
+    background: #FFFDFB;
   }
 
   .login-card .card-header {
-    background: #3F7D6E;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    background: none;
     border-bottom: none;
-    padding: 14px;
+    padding: 40px 26px 8px;
+    text-align: center;
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .brand-mark .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #C98A76;
+  }
+
+  .brand-mark span {
+    font-family: 'Italiana', serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #4A2C38;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .login-card h1.card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #2B1E22;
+    margin: 0 0 2px;
+  }
+
+  .login-card .subtitle {
+    color: #8A7580;
+    font-size: 13.5px;
+    margin: 0;
   }
 
   .login-card .card-body {
-    background: #ffffff;
-    padding: 28px 26px;
+    background: #FFFDFB;
+    padding: 20px 30px 32px;
   }
 
   .login-card .form-label {
-    color: #5C7D74;
+    color: #4A2C38;
     font-weight: 500;
     font-size: 0.85rem;
     text-align: left;
@@ -41,20 +82,20 @@
   }
 
   .login-card .form-control {
-    background: #F7FAF9;
-    border: 1.5px solid #D9E7E2;
+    background: #FFFDFB;
+    border: 1.5px solid #ECDFDA;
     border-radius: 10px;
     padding: 10px 12px;
   }
 
   .login-card .form-control:focus {
-    border-color: #3F7D6E;
+    border-color: #C98A76;
     background: #fff;
-    box-shadow: 0 0 0 4px #E4F0EC;
+    box-shadow: 0 0 0 4px rgba(201, 138, 118, 0.18);
   }
 
   .login-card .btn-primary {
-    background: #3F7D6E;
+    background: #4A2C38;
     border: none;
     border-radius: 10px;
     padding: 10px 24px;
@@ -64,7 +105,7 @@
   }
 
   .login-card .btn-primary:hover {
-    background: #34675A;
+    background: #3A2029;
   }
 
   .login-card .badge.text-bg-danger {
@@ -75,12 +116,19 @@
 </style>
 
 <div class="card text-center login-card position-absolute top-50 start-50 translate-middle">
-  <h5 class="card-header">Login POS</h5>
+  <div class="card-header">
+    <div class="brand-mark">
+      <span class="dot"></span>
+      <span>Aveline</span>
+    </div>
+    <h1 class="card-title">Masuk ke akun</h1>
+  
+  </div>
   <div class="card-body">
     <form action="{{ route('auth') }}" method="POST">
         @csrf
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label for="exampleInputEmail1" class="form-label">Alamat Email</label>
     <input type="email" name="email" class="form-control"
      id="exampleInputEmail1" aria-describedby="emailHelp">
      @error('email')
@@ -88,14 +136,14 @@
      @enderror
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label for="exampleInputPassword1" class="form-label">Kata Sandi</label>
     <input type="password"  name="password" class="form-control" 
     id="exampleInputPassword1">
     @error('password')
         <div class="badge text-bg-danger">{{ $message }}</div>
      @enderror
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Masuk</button>
 </form>
   </div>
 </div>

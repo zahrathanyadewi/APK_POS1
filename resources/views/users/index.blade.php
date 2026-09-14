@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title', 'Pengguna')
 
 @section('content')
 
@@ -8,62 +8,63 @@
 
 <style>
   h1 {
-    color: #22423A;
-    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    color: #2B1E22;
+    font-weight: 600;
     margin-bottom: 1rem;
   }
 
   .btn-primary {
-    background: #3F7D6E !important;
-    border-color: #3F7D6E !important;
+    background: #4A2C38 !important;
+    border-color: #4A2C38 !important;
     font-weight: 500;
     border-radius: 8px;
   }
   .btn-primary:hover {
-    background: #34675A !important;
-    border-color: #34675A !important;
+    background: #3A2029 !important;
+    border-color: #3A2029 !important;
   }
 
   .form-control {
-    border: 1.5px solid #D9E7E2;
+    border: 1.5px solid #ECDFDA;
   }
   .form-control:focus {
-    border-color: #3F7D6E;
-    box-shadow: 0 0 0 4px #E4F0EC;
+    border-color: #C98A76;
+    box-shadow: 0 0 0 4px rgba(201, 138, 118, 0.18);
   }
 
   .btn-secondary {
-    background: #5C7D74 !important;
-    border-color: #5C7D74 !important;
+    background: #8A7580 !important;
+    border-color: #8A7580 !important;
   }
   .btn-secondary:hover {
-    background: #4A6960 !important;
-    border-color: #4A6960 !important;
+    background: #6F5D66 !important;
+    border-color: #6F5D66 !important;
   }
 
   .btn-warning {
-    background: #8A9A7E !important;
-    border: 1px solid #798A6D !important;
+    background: #C98A76 !important;
+    border: 1px solid #B87560 !important;
     color: #ffffff !important;
     font-weight: 500;
     border-radius: 8px;
   }
   .btn-warning:hover {
-    background: #798A6D !important;
-    border-color: #67785C !important;
+    background: #B87560 !important;
+    border-color: #A5644F !important;
     color: #ffffff !important;
   }
 
   .btn-danger {
-    background: #6B7F6C !important;
-    border: 1px solid #5A6E5B !important;
+    background: #7A4B57 !important;
+    border: 1px solid #693F49 !important;
     color: #ffffff !important;
     font-weight: 500;
     border-radius: 8px;
   }
   .btn-danger:hover {
-    background: #5A6E5B !important;
-    border-color: #495D4A !important;
+    background: #693F49 !important;
+    border-color: #58333B !important;
   }
 
   .table {
@@ -72,43 +73,41 @@
     overflow: hidden;
   }
   .table thead th {
-    background: #F0F7F4;
-    color: #5C7D74;
+    background: #F8EFEA;
+    color: #8A7580;
     font-weight: 600;
-    border-bottom: 2px solid #D9E7E2;
+    border-bottom: 2px solid #ECDFDA;
   }
   .table td, .table th {
-    border-color: #E4EFEC !important;
+    border-color: #F1E5E0 !important;
     vertical-align: middle;
   }
   .table tbody tr:hover {
-    background: #F7FAF9;
+    background: #FBF4F1;
   }
 </style>
 
-<h1>Halaman Users</h1>
-<a href="{{ route('admin.users.create') }}" class="btn btn-primary">Create</a>
+<h1>Halaman Pengguna</h1>
 
-<form action="{{ route('admin.users') }}" method="GET" class="mb-3">
-    <div class="input-group">
-        <input
-            type="text"
-            name="search"
-            value="{{ request('search') }}"
-            class="form-control"
-            placeholder="Search username or email"
-        >
-        <button class="btn btn-secondary" type="submit">Search</button>
-    </div>
+<form action="{{ route('admin.users') }}" method="GET" class="mb-3 d-flex gap-2">
+    <input
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        class="form-control"
+        placeholder="Cari username atau email"
+    >
+    <button class="btn btn-secondary" type="submit">Cari</button>
+    <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Tambah</a>
 </form>
-    
+
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
+      <th scope="col">Nama</th>
       <th scope="col">Email</th>
-      <th scope="col">Role</th>
+      <th scope="col">Peran</th>
       <th scope="col">Aksi</th>
     </tr>
   </thead>
